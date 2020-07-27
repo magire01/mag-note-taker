@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-require("../Develop/public/assets/js/index")
+const fs = require("fs");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -10,6 +10,10 @@ app.listen(PORT, function () {
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+const allNotes = {
+    "test": "test"
+};
 
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
@@ -22,5 +26,5 @@ app.get("/notes", function (req, res) {
 });
 
 app.get("/api/notes", function (req, res) {
-    res.json(noteListItems);
+    return res.json(allNotes);
 });
