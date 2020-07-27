@@ -12,7 +12,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const allNotes = {
-    "test": "test"
+    "test": fs.readFile("db.json", "utf-8", function (err, data) {
+        if (err) {
+            console.log(er);
+        } else {
+            console.log("db read succesfully!")
+        }
+    })
 };
 
 app.get("/", function (req, res) {
