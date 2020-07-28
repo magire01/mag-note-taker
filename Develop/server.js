@@ -50,3 +50,10 @@ app.get("/notes", function (req, res) {
 app.get("/api/notes", function (req, res) {
     return res.json(dbJson[0]);
 });
+
+app.post("/api/notes", function (req, res) {
+    const noteField = req.body;
+
+    dbJson.push(noteField);
+    console.log("Note Added!");
+});
