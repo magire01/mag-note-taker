@@ -34,7 +34,7 @@ app.get("/api/notes", function (req, res) {
 });
 
 app.post("/api/notes", function (req, res) {
-    const dbNote = req.body;
+    const note = req.body;
     const id = parseInt(req.params.id);
     fs.readFile("db.json", function (err, data) {
         if (err) {
@@ -42,19 +42,18 @@ app.post("/api/notes", function (req, res) {
         } else {
             const noteField = JSON.parse(data);
             noteField.id = noteField.length - 1;
-            noteField.push(dbNote);
+            noteField.push(note);
         }
     });
 
-    fs.writeFile("db.json", JSON.stringify(dbNote), function (err) {
+    fs.writeFile("db.json", JSON.stringify(note), function (err) {
         if (err) {
             throw err;
         } else {
-            res.json(dbNote);
+            res.json(note);
         }
     });
 });
-
 
 
 app.listen(PORT, function () {
