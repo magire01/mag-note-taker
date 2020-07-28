@@ -6,6 +6,9 @@
 ![Main Screen](..public/assets/screenshot.png)
 <br>
 <br>
+<h4> Known Issues </h4>
+<p> The notes do not save on the app, but only update the db.json file. Working on issue where json file is not being read and written to the server. </p>
+<br>
 <p>This app's front end was already complete with HTML, CSS, and Jquery, but I completed the front end using node.js. This app allows a user to write, save, and detete notes. </p>
 
  <h5>Table of Contents:</h5>
