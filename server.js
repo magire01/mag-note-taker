@@ -46,7 +46,7 @@ app.post("/api/notes", function (req, res) {
         }
     });
 
-    fs.writeFile("db.json", JSON.stringify(note), function (err) {
+    fs.writeFile("db.json", JSON.stringify(note), function (err, data) {
         if (err) {
             throw err;
         } else {
@@ -54,6 +54,29 @@ app.post("/api/notes", function (req, res) {
         }
     });
 });
+
+app.post("/api/notes/:id", function (req, res) {
+    const id = parseInt(req.params.id);
+    fs.readFile("db.json", function (err, data) {
+        if (err) {
+            throw err;
+        } else {
+            const noteField = JSON.parse(data);
+            noteField.id = noteField.length - 1;
+            noteField.push(note);
+        }
+    });
+
+    fs.writeFile("db.json", JSON.stringify(note), function (err, data) {
+        if (err) {
+            throw err;
+        } else {
+            res.json(note);
+        }
+    });
+
+
+})
 
 
 app.listen(PORT, function () {
