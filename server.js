@@ -20,14 +20,15 @@ app.get("/notes", function (req, res) {
     res.sendFile(path.join(__dirname, "/public/notes.html"));
     console.log("entered notes.html");
 });
-
+const noteField = [];
 app.get("/api/notes", function (req, res) {
     fs.readFileSync("db.json", function(err, data) {
         if (err) {
             throw err;
         } else {
-            const noteField = JSON.parse(data);
-            res.json(noteField);
+            const noteRead = JSON.parse(data)
+            console.log("notefieldtest", noteRead);
+            res.json(noteRead);
         }
         
     })
@@ -35,21 +36,23 @@ app.get("/api/notes", function (req, res) {
 
 app.post("/api/notes", function (req, res) {
     const note = req.body;
-    const id = parseInt(req.params.id);
+    // const id = parseInt(req.params.id);
     fs.readFile("db.json", function (err, data) {
         if (err) {
             throw err;
         } else {
-            const noteField = JSON.parse(data);
-            noteField.id = noteField.length - 1;
+            // noteField.id = noteField.length-1;
             noteField.push(note);
+            console.log("readfiletest", noteField);
+            
         }
     });
 
-    fs.writeFile("db.json", JSON.stringify(note), function (err, data) {
+    fs.writeFile("db.json", JSON.stringify(note), function (err) {
         if (err) {
             throw err;
         } else {
+            console.log("writefiletest", note);
             res.json(note);
         }
     });
@@ -61,9 +64,9 @@ app.post("/api/notes/:id", function (req, res) {
         if (err) {
             throw err;
         } else {
-            const noteField = JSON.parse(data);
+            const noteField = data;
             noteField.id = noteField.length - 1;
-            noteField.push(note);
+            noteField.push(noteField);
         }
     });
 
@@ -71,7 +74,7 @@ app.post("/api/notes/:id", function (req, res) {
         if (err) {
             throw err;
         } else {
-            res.json(note);
+            res.json(data);
         }
     });
 
