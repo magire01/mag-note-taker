@@ -1,8 +1,7 @@
 <h2>Note Taker</h2> 
-<br>
+
 [https://afternoon-hollows-38145.herokuapp.com/](https://afternoon-hollows-38145.herokuapp.com/)
-<br>
-<br>
+
 ![Main Screen](..public/assets/screenshot.png)
 <br>
 <br>
